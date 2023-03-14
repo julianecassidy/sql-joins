@@ -12,7 +12,7 @@ SELECT *
 SELECT o.first_name, COUNT(*)
   FROM owners AS o
     JOIN vehicles AS v ON o.id = v.owner_id
-  GROUP BY o.first_name
+  GROUP BY o.first_name -- BUG: Grouping by first name doesn't account for the fact that ppl have same first name, better to group by id
   ORDER BY o.first_name;
 
 SELECT o.first_name, ROUND(AVG(v.price), 0) AS average_price, COUNT(*)
